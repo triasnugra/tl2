@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TikTok Shop CS — Team Leader Interview Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & ROOT ────────────────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --red:    #fe2c55;
+  --red2:   #ff4d6a;
+  --dark:   #0a0a0a;
+  --dark2:  #111111;
+  --dark3:  #181818;
+  --dark4:  #222222;
+  --border: #2a2a2a;
+  --text:   #f5f5f5;
+  --muted:  #888;
+  --muted2: #555;
+  --green:  #25d366;
+  --amber:  #f59e0b;
+  --blue:   #3b9eed;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'Plus Jakarta Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--dark);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── SCROLLBAR ──────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
+
+/* ─── HERO ───────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 6rem 2rem 4rem;
+}
+
+/* animated grid bg */
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(254,44,85,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(254,44,85,0.07) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridShift 20s linear infinite;
+}
+
+@keyframes gridShift {
+  from { transform: translateY(0); }
+  to   { transform: translateY(60px); }
+}
+
+.hero-glow {
+  position: absolute;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(254,44,85,0.18) 0%, transparent 70%);
+  top: -200px; right: -200px;
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(254,44,85,0.12);
+  border: 1px solid rgba(254,44,85,0.3);
+  color: var(--red);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.45rem 1rem;
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+  animation: fadeDown 0.6s ease both;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--red);
+  border-radius: 50%;
+  animation: pulse 1.5s ease infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50% { opacity:0.4; transform:scale(0.6); }
+}
+
+h1.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 10vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+  animation: fadeDown 0.6s 0.1s ease both;
+}
+
+h1.hero-title span {
+  color: var(--red);
+  display: block;
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--muted);
+  margin: 1.5rem 0 2.5rem;
+  max-width: 560px;
+  font-weight: 400;
+  animation: fadeDown 0.6s 0.2s ease both;
+}
+
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  animation: fadeDown 0.6s 0.3s ease both;
+}
+
+.stat { display: flex; flex-direction: column; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--red);
+}
+.stat-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.2rem; }
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--muted2);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  animation: fadeDown 0.6s 0.5s ease both;
+}
+
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--red), transparent);
+  animation: scrollPulse 1.8s ease infinite;
+}
+
+@keyframes scrollPulse {
+  0% { transform: scaleY(0); transform-origin: top; opacity:0; }
+  50% { transform: scaleY(1); opacity:1; }
+  100% { transform: scaleY(1); transform-origin: bottom; opacity:0; }
+}
+
+@keyframes fadeDown {
+  from { opacity:0; transform: translateY(-16px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+/* ─── NAV ────────────────────────────────────────────────── */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--red);
+  letter-spacing: 0.08em;
+  padding: 1rem 1.5rem 1rem 0;
+  border-right: 1px solid var(--border);
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.nav-btn {
+  flex-shrink: 0;
+  padding: 1rem 1.1rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  letter-spacing: 0.04em;
+}
+.nav-btn:hover { color: var(--text); }
+.nav-btn.active { color: var(--red); border-bottom-color: var(--red); }
+
+/* ─── MAIN LAYOUT ────────────────────────────────────────── */
+.main { max-width: 1100px; margin: 0 auto; padding: 0 2rem 6rem; }
+
+.section { display: none; padding-top: 3rem; }
+.section.active {
+  display: block;
+  animation: sectionIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes sectionIn {
+  from { opacity:0; transform: translateY(20px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+/* ─── SECTION HEADER ─────────────────────────────────────── */
+.sec-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.sec-number {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  line-height: 1;
+  color: rgba(254,44,85,0.15);
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+.sec-title-group { flex: 1; min-width: 200px; }
+
+.sec-tag {
+  display: inline-block;
+  background: rgba(254,44,85,0.1);
+  border: 1px solid rgba(254,44,85,0.25);
+  color: var(--red);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border-radius: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.sec-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--text);
+}
+
+.sec-desc { color: var(--muted); font-size: 0.9rem; margin-top: 0.5rem; max-width: 600px; }
+
+/* ─── CARDS ──────────────────────────────────────────────── */
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.2rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.2rem; }
+
+.card {
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.6rem;
+  position: relative;
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--card-color, var(--red));
+  opacity: 0.6;
+}
+
+.card:hover {
+  border-color: rgba(254,44,85,0.35);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.card-icon {
+  width: 38px; height: 38px;
+  background: rgba(254,44,85,0.1);
+  border: 1px solid rgba(254,44,85,0.2);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.card-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.3;
+  margin-top: 0.15rem;
+}
+
+.card-sub { font-size: 0.75rem; color: var(--muted); margin-top: 0.15rem; }
+
+ul.kisi { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+
+ul.kisi li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: #ccc;
+  line-height: 1.55;
+}
+
+ul.kisi li::before {
+  content: '';
+  width: 5px; height: 5px;
+  background: var(--card-color, var(--red));
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.45rem;
+}
+
+.kisi b { color: var(--text); font-weight: 600; }
+
+/* ─── QUESTION ACCORDION ─────────────────────────────────── */
+.q-list { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.q-item {
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.q-item:hover { border-color: rgba(254,44,85,0.3); }
+.q-item.open { border-color: rgba(254,44,85,0.4); }
+
+.q-head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.q-head:hover { background: rgba(255,255,255,0.02); }
+.q-item.open .q-head { background: rgba(254,44,85,0.05); }
+
+.q-num {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: rgba(254,44,85,0.4);
+  flex-shrink: 0;
+  width: 28px;
+  text-align: center;
+  transition: color 0.2s;
+}
+
+.q-item.open .q-num { color: var(--red); }
+
+.q-cat {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.cat-leadership { background: rgba(59,158,237,0.15); color: var(--blue); }
+.cat-ops        { background: rgba(37,211,102,0.15); color: var(--green); }
+.cat-people     { background: rgba(254,44,85,0.15);  color: var(--red); }
+.cat-scenario   { background: rgba(245,158,11,0.15); color: var(--amber); }
+.cat-self       { background: rgba(200,200,200,0.1); color: #aaa; }
+
+.q-text {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  flex: 1;
+  line-height: 1.4;
+}
+
+.q-arrow {
+  color: var(--muted2);
+  font-size: 0.7rem;
+  transition: transform 0.25s;
+  flex-shrink: 0;
+}
+
+.q-item.open .q-arrow { transform: rotate(180deg); color: var(--red); }
+
+.q-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.q-item.open .q-body { max-height: 700px; }
+
+.q-body-inner {
+  padding: 0 1.2rem 1.3rem 1.2rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.answer-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.6rem;
+}
+
+.answer-text {
+  font-size: 0.87rem;
+  color: #bbb;
+  line-height: 1.75;
+}
+
+.answer-text b { color: var(--text); font-weight: 600; }
+
+.answer-tip {
+  margin-top: 0.9rem;
+  padding: 0.75rem 1rem;
+  background: rgba(245,158,11,0.07);
+  border-left: 2px solid var(--amber);
+  border-radius: 0 4px 4px 0;
+  font-size: 0.8rem;
+  color: #bbb;
+  line-height: 1.6;
+}
+
+.answer-tip strong { color: var(--amber); }
+
+/* ─── DIFFICULTY BADGE ───────────────────────────────────── */
+.diff {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.diff-easy   { background: rgba(37,211,102,0.12); color: var(--green); }
+.diff-medium { background: rgba(245,158,11,0.12); color: var(--amber); }
+.diff-hard   { background: rgba(254,44,85,0.12);  color: var(--red); }
+
+/* ─── MATRIX TABLE ───────────────────────────────────────── */
+.matrix {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.matrix th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  background: var(--dark3);
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+}
+
+.matrix td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  color: #ccc;
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.matrix tr:last-child td { border-bottom: none; }
+.matrix td:first-child { color: var(--text); font-weight: 600; }
+.matrix tr:hover td { background: rgba(254,44,85,0.03); }
+
+/* ─── SCORE BREAKDOWN ────────────────────────────────────── */
+.score-bar-wrap { display: flex; flex-direction: column; gap: 0.9rem; }
+
+.score-row { display: flex; flex-direction: column; gap: 0.3rem; }
+.score-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.score-label span:last-child { color: var(--muted); }
+
+.score-track {
+  height: 6px;
+  background: var(--dark4);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.score-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.score-fill.animate { transform: scaleX(1); }
+
+/* ─── TIPS CALLOUT ───────────────────────────────────────── */
+.callout {
+  display: flex;
+  gap: 1rem;
+  background: var(--dark3);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--red);
+  border-radius: 0 4px 4px 0;
+  padding: 1.2rem 1.4rem;
+  margin-top: 1.2rem;
+  font-size: 0.85rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.callout-icon { font-size: 1.2rem; flex-shrink: 0; }
+.callout b { color: var(--text); }
+
+/* ─── PHASE TIMELINE ─────────────────────────────────────── */
+.timeline { position: relative; display: flex; flex-direction: column; gap: 0; }
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 18px; top: 20px; bottom: 20px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--red), transparent);
+}
+
+.tl-item {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+  padding-bottom: 1.5rem;
+  position: relative;
+}
+
+.tl-dot {
+  width: 36px; height: 36px;
+  background: var(--dark3);
+  border: 2px solid var(--red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--red);
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+.tl-body { padding-top: 0.3rem; }
+.tl-title { font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 0.25rem; }
+.tl-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
+
+/* ─── FULL-WIDTH CARD ────────────────────────────────────── */
+.card-full {
+  background: var(--dark2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2rem;
+  margin-bottom: 1.2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-full::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--red);
+  opacity: 0.5;
+}
+
+/* ─── HIGHLIGHT PHRASE ───────────────────────────────────── */
+.phrase-grid { display: flex; flex-direction: column; gap: 0.7rem; margin-top: 0.5rem; }
+
+.phrase-item {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  background: var(--dark3);
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  font-size: 0.87rem;
+  color: #ddd;
+  font-style: italic;
+  transition: border-color 0.2s;
+}
+
+.phrase-item:hover { border-color: rgba(254,44,85,0.3); }
+.phrase-item::before { content: '"'; color: var(--red); font-size: 1.4rem; font-style: normal; line-height: 1; flex-shrink: 0; }
+
+/* ─── FOOTER ─────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--muted2);
+  margin-top: 4rem;
+}
+
+footer span { color: var(--red); }
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .hero-stats { gap: 1.5rem; }
+  .sec-number { font-size: 3rem; }
+  .q-cat, .diff { display: none; }
+  .card-full { padding: 1.2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── HERO ─────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Interview Preparation Guide</div>
+    <h1 class="hero-title">
+      TikTok Shop CS
+      <span>Team Leader</span>
+    </h1>
+    <p class="hero-sub">
+      Kisi-kisi lengkap pertanyaan interview, panduan jawaban, dan tips persiapan untuk posisi Team Leader / Supervisor di Customer Service TikTok Shop.
+    </p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">6</span><span class="stat-label">Kategori Topik</span></div>
+      <div class="stat"><span class="stat-num">30+</span><span class="stat-label">Pertanyaan Latihan</span></div>
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Panduan Jawaban</span></div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- ── STICKY NAV ────────────────────────────────────────────── -->
+<nav class="sticky-nav">
+  <div class="nav-inner">
+    <div class="nav-logo">TTS · TL Guide</div>
+    <button class="nav-btn active" onclick="showSection('overview')">📋 Overview</button>
+    <button class="nav-btn" onclick="showSection('about')">🙋 Tentang Diri</button>
+    <button class="nav-btn" onclick="showSection('leadership')">👑 Leadership</button>
+    <button class="nav-btn" onclick="showSection('ops')">⚙️ Operasional</button>
+    <button class="nav-btn" onclick="showSection('people')">🤝 People Mgmt</button>
+    <button class="nav-btn" onclick="showSection('scenario')">🎭 Skenario</button>
+    <button class="nav-btn" onclick="showSection('tips')">✨ Tips & Phrases</button>
+  </div>
+</nav>
+
+<!-- ── MAIN ──────────────────────────────────────────────────── -->
+<main class="main">
+
+<!-- ══ OVERVIEW ═══════════════════════════════════════════════ -->
+<section id="overview" class="section active">
+  <div class="sec-header">
+    <div class="sec-number">00</div>
+    <div class="sec-title-group">
+      <div class="sec-tag">Overview</div>
+      <h2 class="sec-title">Peta Interview</h2>
+      <p class="sec-desc">Apa yang dinilai interviewer, format interview yang umum, dan komponen penilaian utama.</p>
+    </div>
+  </div>
+
+  <!-- What they assess -->
+  <div class="grid-3" style="margin-bottom:1.2rem;">
+    <div class="card" style="--card-color: var(--red)">
+      <div class="card-header">
+        <div class="card-icon">🧠</div>
+        <div><div class="card-title">Leadership Mindset</div><div class="card-sub">Bagaimana kamu berpikir sebagai pemimpin</div></div>
+      </div>
+      <ul class="kisi">
+        <li>Gaya kepemimpinan dan alasannya</li>
+        <li>Bagaimana memotivasi tim</li>
+        <li>Cara mengambil keputusan sulit</li>
+        <li>Kemampuan membagi prioritas</li>
+      </ul>
+    </div>
+
+    <div class="card" style="--card-color: var(--green)">
+      <div class="card-header">
+        <div class="card-icon">📊</div>
+        <div><div class="card-title">Operational Knowledge</div><div class="card-sub">Pemahaman KPI & proses CS</div></div>
+      </div>
+      <ul class="kisi">
+        <li>Pemahaman metrik: CSAT, FCR, AHT, SLA</li>
+        <li>Cara monitor & report performa tim</li>
+        <li>Eskalasi kasus kompleks</li>
+        <li>Koordinasi dengan tim lain (seller, ops)</li>
+      </ul>
+    </div>
+
+    <div class="card" style="--card-color: var(--blue)">
+      <div class="card-header">
+        <div class="card-icon">👥</div>
+        <div><div class="card-title">People Management</div><div class="card-sub">Mengelola tim yang beragam</div></div>
+      </div>
+      <ul class="kisi">
+        <li>Coaching dan pengembangan agen</li>
+        <li>Menangani konflik di dalam tim</li>
+        <li>Mengelola agen underperformer</li>
+        <li>Membangun budaya tim yang positif</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Format & scoring -->
+  <div class="grid-2">
+    <div class="card-full">
+      <div style="font-size:0.72rem; font-weight:700; color:var(--red); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:1rem;">Format Interview Umum</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot">1</div>
+          <div class="tl-body">
+            <div class="tl-title">Intro & Ice Breaker <span style="font-size:0.75rem; color:var(--muted); font-weight:400;">(5–10 mnt)</span></div>
+            <div class="tl-desc">Perkenalan diri, latar belakang, dan alasan melamar. Ini kesempatan membuat kesan pertama yang kuat.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">2</div>
+          <div class="tl-body">
+            <div class="tl-title">Behavioral Questions <span style="font-size:0.75rem; color:var(--muted); font-weight:400;">(15–20 mnt)</span></div>
+            <div class="tl-desc">Pertanyaan berbasis pengalaman nyata. Gunakan metode STAR: Situation → Task → Action → Result.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">3</div>
+          <div class="tl-body">
+            <div class="tl-title">Situational / Case Questions <span style="font-size:0.75rem; color:var(--muted); font-weight:400;">(15–20 mnt)</span></div>
+            <div class="tl-desc">Diberi skenario hipotetis — "bagaimana kamu menangani situasi X?" Tunjukkan proses berpikirmu, bukan hanya jawaban.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">4</div>
+          <div class="tl-body">
+            <div class="tl-title">Q&A dari Kandidat <span style="font-size:0.75rem; color:var(--muted); font-weight:400;">(5 mnt)</span></div>
+            <div class="tl-desc">Ajukan 2–3 pertanyaan yang menunjukkan kamu sudah riset tentang tim, target KPI, atau tantangan terbesar posisi ini.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-full">
+      <div style="font-size:0.72rem; font-weight:700; color:var(--red); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:1.2rem;">Bobot Penilaian (Estimasi)</div>
+      <div class="score-bar-wrap" id="scoreBars">
+        <div class="score-row">
+          <div class="score-label"><span>Leadership & Communication</span><span>30%</span></div>
+          <div class="score-track"><div class="score-fill" style="width:30%"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>Problem Solving & Scenarios</span><span>25%</span></div>
+          <div class="score-track"><div class="score-fill" style="width:25%"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>Operational Knowledge (KPI/SLA)</span><span>20%</span></div>
+          <div class="score-track"><div class="score-fill" style="width:20%"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>People Management</span><span>15%</span></div>
+          <div class="score-track"><div class="score-fill" style="width:15%"></div></div>
+        </div>
+        <div class="score-row">
+          <div class="score-label"><span>Self-Awareness & Growth Mindset</span><span>10%</span></div>
+          <div class="score-track"><div class="score-fill" style="width:10%"></div></div>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:1.5rem;">
+        <span class="callout-icon">💡</span>
+        <span><b>TikTok Shop CS</b> sangat menekankan <b>kecepatan eskalasi, data-driven decisions,</b> dan kemampuan <b>handle volume tinggi</b> di peak hours (Harbolnas, Flash Sale). Siapkan contoh nyata yang relevan.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TENTANG DIRI ════════════════════════════════════════════ -->
+<section id="about" class="section">
+  <div class="sec-header">
+    <div class="sec-number">01</div>
+    <div class="sec-title-group">
+      <div class="sec-tag">Self Introduction</div>
+      <h2 class="sec-title">Tentang Diri</h2>
+      <p class="sec-desc">Pertanyaan pembuka yang menentukan kesan pertama. Jawab dengan percaya diri, terstruktur, dan relevan.</p>
+    </div>
+  </div>
+
+  <div class="q-list">
+
+    <div class="q-item">
+      <div class="q-head" onclick="toggleQ(this)">
+        <span class="q-num">1</span>
+        <span class="q-cat cat-self">Self</span>
+        <span class="diff diff-easy">● Easy</span>
+        <span class="q-text">Ceritakan tentang diri kamu. / Tell me about yourself.</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="q-body"><div class="q-body-inner">
+        <div class="answer-label">✦ Panduan Jawaban</div>
+        <div class="answer-text">
+          Gunakan struktur <b>Present → Past → Future</b>:<br><br>
+          <b>Present:</b> "I've been working in Customer Service for [X] years, currently as a [role] at [company], handling [type of queries — e.g., buyer complaints, escalations, seller issues]."<br><br>
+          <b>Past:</b> "Before this, I [key experience relevant to TL role]. One of my highlights was [achievement — e.g., being awarded Best Agent, reducing AHT by X%]."<br><br>
+          <b>Future:</b> "I'm now ready to take the next step into a leadership role. I'm applying here because TikTok Shop is one of the fastest-growing e-commerce platforms, and I want to build and develop a high-performing CS team in that environment."
+        </div>
+        <div class="answer-tip"><strong>⚡ Tip:</strong> Waktu ideal 90–120 detik. Jangan terlalu panjang. Akhiri dengan kalimat yang langsung menghubungkan dirimu ke posisi TL yang dilamar.</div>
+      </div></div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-head" onclick="toggleQ(this)">
+        <span class="q-num">2</span>
+        <span class="q-cat cat-self">Self</span>
+        <span class="diff diff-easy">● Easy</span>
+        <span class="q-text">Kenapa kamu mau jadi Team Leader? / Why do you want to be a Team Leader?</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="q-body"><div class="q-body-inner">
+        <div class="answer-label">✦ Panduan Jawaban</div>
+        <div class="answer-text">
+          "I've realized that my impact as an individual agent has a ceiling. No matter how fast I resolve a ticket, I can only handle so many customers. But as a Team Leader, I can multiply that impact — if I develop 10 agents to be better, that's 10x the improvement for customers.<br><br>
+          I also genuinely enjoy helping people grow. I've had moments where I informally helped teammates understand a tricky policy, and seeing them become more confident was more rewarding than resolving a case myself. That told me leadership is where I belong."
+        </div>
+        <div class="answer-tip"><strong>⚡ Tip:</strong> Hindari jawaban "karena gaji lebih besar" atau "sudah waktunya." Fokus pada dampak dan passion untuk develop orang lain.</div>
+      </div></div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-head" onclick="toggleQ(this)">
+        <span class="q-num">3</span>
+        <span class="q-cat cat-self">Self</span>
+        <span class="diff diff-medium">● Medium</span>
+        <span class="q-text">Apa kekuatan dan kelemahan kamu? / What are your strengths and weaknesses?</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="q-body"><div class="q-body-inner">
+        <div class="answer-label">✦ Panduan Jawaban</div>
+        <div class="answer-text">
+          <b>Strengths (pilih 2, selalu hubungkan ke TL role):</b><br>
+          — "I have strong empathy. I can quickly read how an agent or a customer is feeling, which helps me de-escalate situations before they blow up."<br>
+          — "I'm data-oriented. I don't just manage by gut feeling — I track numbers and patterns to find the real root cause of a problem."<br><br>
+          <b>Weakness (jujur + tunjukkan sudah improving):</b><br>
+          — "My weakness is that I'm still developing my experience in formal leadership. I've led informally — mentoring teammates, covering shifts — but a full TL role with accountability for team KPIs is new to me. To address this, I've been [reading, taking a management course, observing my TL closely, etc.]."
+        </div>
+        <div class="answer-tip"><strong>⚡ Tip:</strong> Jangan sebut kelemahan yang langsung mendiskualifikasi kamu (e.g., "saya tidak sabar"). Pilih weakness yang nyata tapi sudah kamu kelola secara aktif.</div>
+      </div></div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-head" onclick="toggleQ(this)">
+        <span class="q-num">4</span>
+        <span class="q-cat cat-self">Self</span>
+        <span class="diff diff-medium">● Medium</span>
+        <span class="q-text">Di mana kamu melihat dirimu 2–3 tahun ke depan?</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="q-body"><div class="q-body-inner">
+        <div class="answer-label">✦ Panduan Jawaban</div>
+        <div class="answer-text">
+          "In 2–3 years, I want to have built a CS team that consistently exceeds KPI targets — not because agents are pressured to, but because they genuinely understand the impact of their work and take pride in it.<br><br>
+          I also hope to have developed at least one agent from my team who's ready for a TL role themselves. That's how I'll know I've led well — not by my own performance, but by theirs."
+        </div>
+        <div class="answer-tip"><strong>⚡ Tip:</strong> Tunjukkan ambisi yang realistis dan relevan dengan posisi. Jangan bilang "saya ingin jadi Manager dalam setahun" — itu terkesan terburu-buru. Fokus pada kontribusi, bukan title.</div>
+      </div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ LEADERSHIP ══════════════════════════════════════════════ -->
+<section id="leadership" class="section">
+  <div class="sec-header">
+    <div class="sec-number">02</div>
+    <div class="sec-title-group">
+      <div class="sec-tag">Leadership Style</div>
+      <h2 class="sec-title">Gaya Kepemimpinan</h2>
+      <p class="sec-desc">Interviewer ingin tahu bagaimana kamu memimpin — bukan hanya teorinya, tapi dengan contoh nyata.</p>
+    </div>
+  </div>
+
+  <div class="q-list">
+
+    <div class="q-item">
+      <div class="q-head" onclick="toggleQ(this)">
+        <span class="q-num">5</span>
+        <span class="q-cat cat-leadership">Leadership</span>
+        <span class="diff diff-medium">● Medium</span>
+        <span class="q-text">Bagaimana gaya kepemimpinan kamu? / Describe your leadership style.</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="q-body"><div class="q-body-inner">
+        <div class="answer-label">✦ Panduan Jawaban</div>
+        <div class="answer-text">
+          "I lead with a democratic and situational approach. I believe in listening to my team — they're the ones on the frontline, so their input is valuable. But listening doesn't mean I avoid making decisions. I gather their perspective, then make a clear call that the team can trust.<br><br>
+          I adapt my style based on the person and situation. <b>For a new agent</b>, I'm more directive — I give clear instructions and check in frequently. <b>For an experienced agent</b>, I step back and delegate, coaching them to solve problems independently. <b>In urgent situations</b> — like a system outage or a major complaint spike — I switch to a decisive, direct mode to keep things stable."
+        </div>
+        <div class="answer-tip"><strong>⚡ Tip:</strong> Sebutkan gaya kepemimpinan spesifik (democratic, coaching, situational) dan beri contoh konkret kapan kamu mengaplikasikannya.</div>
+      </div></div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-head" onclick="toggleQ(this)">
+        <span class="q-num">6</span>
+        <span class="q-cat cat-leadership">Leadership</span>
+        <span class="diff diff-medium">● Medium</span>
+        <span class="q-text">Bagaimana cara kamu memotivasi tim yang performanya sedang turun?</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="q-body"><div class="q-body-inner">
+        <div class="answer-label">✦ Panduan Jawaban</div>
+        <div class="answer-text">
+          "First, I don't assume. I have a 1-on-1 with each agent to understand what's really going on — is it workload, personal issues, misalignment with the role, or just burnout? The solution depends entirely on the root cause.<br><br>
+          If it's a knowledge issue, I do a targeted coaching session and live monitoring. If it's a motivation issue, I try to reconnect them to the purpose — remind them of a specific moment where they made a real difference for a customer. If it's burnout, I look at their schedule and workload.<br><br>
+          I also use public recognition — a weekly shoutout for the most improved agent, even small wins. People work harder when they feel seen."
+        </div>
+        <div class="answer-tip"><strong>⚡ Tip:</strong> Interviewer ingin tahu kamu tidak hanya "push KPI" tapi benar-benar peduli timnya. Tunjukkan empati + proses yang jelas.</div>
+      </div></div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-head" onclick="toggleQ(this)">
+        <span class="q-num">7</span>
+        <span class="q-cat cat-leadership">Leadership</span>
+        <span class="diff diff-hard">● Hard</span>
+        <span class="q-text">Ceritakan waktu kamu harus memberikan feedback negatif kepada seseorang. Bagaimana kamu melakukannya?</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="q-body"><div class="q-body-inner">
+        <div class="answer-label">✦ Panduan Jawaban (STAR Format)</div>
+        <div class="answer-text">
+          <b>Situation:</b> "I had a teammate who was consistently taking too long on each customer interaction, causing the queue to back up."<br><br>
+          <b>Task:</b> "I needed to address it without making them feel attacked, because they were genuinely trying their best."<br><br>
+          <b>Action:</b> "I scheduled a private 1-on-1. I started by acknowledging what they were doing well — they had very high CSAT. Then I showed them the data: their AHT was 40% above team average. I asked them first what they thought was happening, rather than just telling them. Together we identified that they were over-explaining solutions. I coached them to be more concise without losing quality."<br><br>
+          <b>Result:</b> "Within two weeks their AHT dropped by 25%, and their CSAT stayed high. They actually thanked me for the feedback because I delivered it in a way that felt supportive, not critical."
+        </div>
+        <div class="answer-tip"><strong>⚡ Tip:</strong> Selalu bawa contoh nyata untuk pertanyaan behavioral. Interviewer akan kurang terkesan dengan jawaban hipotetikal saja.</div>
+      </div></div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-head" onclick="toggleQ(this)">
+        <span class="q-num">8</span>
+        <span class="q-cat cat-leadership">Leadership</span>
+        <span class="diff diff-hard">● Hard</span>
+        <span class="q-text">Bagaimana kamu membangun kepercayaan (trust) dengan tim yang baru kamu pimpin?</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="q-body"><div class="q-body-inner">
+        <div class="answer-label">✦ Panduan Jawaban</div>
+        <div class="answer-text">
+          "I follow a simple principle: <b>listen first, lead second</b>. In the first 30 days, I focus on understanding — I have 1-on-1 sessions with every team member to learn their challenges, what frustrates them, and what they're proud of. I don't come in with a big agenda on day one.<br><br>
+          Then I do small things consistently: I follow through on every commitment I make. If I say 'I'll look into that issue,' I actually do it and come back with an answer. Trust is built in those small moments, not big gestures.<br><br>
+          I'm also transparent about what I know and what I don't. New TLs who pretend to know everything lose credibility fast. I'd rather say 'I'm not sure, let me check' and be honest."
+        </div>
+        <div class="answer-tip"><strong>⚡ Tip:</strong> Sebutkan angka spesifik seperti "30 days" atau "setiap Senin" — itu menunjukkan kamu sudah punya rencana nyata, bukan sekedar teori.</div>
+      </div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ OPERASIONAL ═════════════════════════════════════════════ -->
+<section id="ops" class="section">
+  <div class="sec-header">
+    <div class="sec-number">03</div>
+    <div class="sec-title-group">
+      <div class="sec-tag">Operations & KPIs</div>
+      <h2 class="sec-title">Operasional & Metrik</h2>
+      <p class="sec-desc">Pemahaman tentang KPI, SLA, dan bagaimana kamu mengelola performa tim secara data-driven.</p>
+    </div>
+  </div>
+
+  <!-- KPI reference table -->
+  <div class="card-full" style="margin-bottom:1.2rem;">
+    <div style="font-size:0.72rem; font-weight:700; color:var(--red); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:1rem;">📊 Metrik Utama CS TikTok Shop yang Harus Dikuasai</div>
+    <table class="matrix">
+      <tr>
+        <th>Metrik</th>
+        <th>Kepanjangan</th>
+        <th>Artinya</th>
+        <th>Target Ideal</th>
+      </tr>
+      <tr>
+        <td>CSAT</td>
+        <td>Customer Satisfaction Score</td>
+        <td>Skor kepuasan pelanggan dari rating 1–5 setelah interaksi</td>
+        <td>≥ 4.5 / 5 atau ≥ 90%</td>
+      </tr>
+      <tr>
+        <td>FCR</td>
+        <td>First Contact Resolution</td>
+        <td>% masalah yang selesai dalam 1 kontak tanpa follow-up</td>
+        <td>≥ 80%</td>
+      </tr>
+      <tr>
+        <td>AHT</td>
+        <td>Average Handle Time</td>
+        <td>Rata-rata waktu menyelesaikan 1 tiket / chat</td>
+        <td>Sesuai SOP — biasanya &lt; 5 mnt untuk live chat</td>
+      </tr>
+      <tr>
+        <td>SLA</td>
+        <td>Service Level Agreement</td>
+        <td>% tiket yang dijawab dalam batas waktu yang ditentukan</td>
+        <td>≥ 95% dalam target waktu</td>
+      </tr>
+      <tr>
+        <td>Backlog Rate</td>
+        <td>—</td>
+        <td>Jumlah tiket yang belum terselesaikan melampaui SLA</td>
+        <td>Serendah mungkin, &lt; 5%</td>
+      </tr>
+      <tr>
+        <td>QA Score</td>
+        <td>Quality Assurance Score</td>
+        <td>Skor dari monitoring kualitas respons agen</td>
+        <td>≥ 85% per agen</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="q-list">
+
+    <div class="q-item">
+      <div class="q-head" onclick="toggleQ(this)">
+        <span class="q-num">9</span>
+        <span class="q-cat cat-ops">Ops</span>
+        <span class="diff diff-medium">● Medium</span>
+        <span class="q-text">Bagaimana kamu memastikan tim kamu konsisten mencapai KPI?</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="q-body"><div class="q-body-inner">
+        <div class="answer-label">✦ Panduan Jawaban</div>
+        <div class="answer-text">
+          "I break it down into three levels: daily, weekly, and monthly.<br><br>
+          <b>Daily:</b> I check the dashboard every morning for real-time metrics — queue volume, SLA compliance, and any agents flagging high AHT. If something's off, I address it immediately, not at end of day.<br><br>
+          <b>Weekly:</b> I do a team performance review every Monday. I share the previous week's numbers openly — who's hitting targets, who needs support. Transparency motivates people.<br><br>
+          <b>Monthly:</b> I do a 1-on-1 with each agent to discuss their individual progress, blockers, and a personal improvement plan if needed.<br><br>
+          I also make sure the team fully understands <b>why</b> each KPI matters — not just the number. When agents connect the metric to the customer experience, they're naturally more motivated to maintain it."
+        </div>
+      </div></div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-head" onclick="toggleQ(this)">
+        <span class="q-num">10</span>
+        <span class="q-cat cat-ops">Ops</span>
+        <span class="diff diff-hard">● Hard</span>
+        <span class="q-text">Bagaimana kamu handle peak period seperti Harbolnas atau Flash Sale, di mana volume tiket naik drastis?</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="q-body"><div class="q-body-inner">
+        <div class="answer-label">✦ Panduan Jawaban</div>
+        <div class="answer-text">
+          "Peak periods require preparation, not just reaction. Here's how I'd handle it:<br><br>
+          <b>Before the event:</b> Forecast the volume spike based on last year's data or client projections. Pre-build an FAQ / knowledge base for the most common issues during that period (e.g., delayed shipments, promo refunds). Brief the team on special SOPs.<br><br>
+          <b>During the event:</b> Redistribute the workload — assign the most experienced agents to the most complex queues. Reduce AHT targets temporarily for simple, repetitive queries so agents can clear volume faster without sacrificing quality on complex cases. Have a clear escalation path so critical cases don't get stuck.<br><br>
+          <b>After the event:</b> Run a post-mortem — what broke down, what worked, what process do we need to improve for the next event."
+        </div>
+        <div class="answer-tip"><strong>⚡ Tip:</strong> Ini pertanyaan kritis untuk TikTok Shop. Tunjukkan kamu berpikir proaktif (persiapan sebelumnya), bukan hanya reaktif.</div>
+      </div></div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-head" onclick="toggleQ(this)">
+        <span class="q-num">11</span>
+        <span class="q-cat cat-ops">Ops</span>
+        <span class="diff diff-medium">● Medium</span>
+        <span class="q-text">CSAT tim kamu turun secara signifikan bulan ini. Apa yang kamu lakukan?</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="q-body"><div class="q-body-inner">
+        <div class="answer-label">✦ Panduan Jawaban</div>
+        <div class="answer-text">
+          "First, I don't panic or immediately blame the team. I dig into the data:<br><br>
+          <b>Step 1 — Identify the pattern:</b> Is the drop across all agents or specific ones? Is it in a specific queue type (e.g., refunds, shipping complaints)? Is it tied to a specific time period or product issue?<br><br>
+          <b>Step 2 — Review low-rated tickets:</b> Read through the 1- and 2-star interactions. Is it a tone issue, resolution time, or an unresolvable policy the customer hates?<br><br>
+          <b>Step 3 — Act on the root cause:</b> If it's tone → QA calibration + coaching. If it's a policy issue → escalate to management with a data-backed case. If it's one agent pulling down the average → focused 1-on-1 coaching plan.<br><br>
+          <b>Step 4 — Follow up:</b> Track CSAT weekly, not monthly, until it recovers."
+        </div>
+      </div></div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-head" onclick="toggleQ(this)">
+        <span class="q-num">12</span>
+        <span class="q-cat cat-ops">Ops</span>
+        <span class="diff diff-medium">● Medium</span>
+        <span class="q-text">Bagaimana kamu menangani kasus eskalasi buyer atau seller yang sangat kompleks?</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="q-body"><div class="q-body-inner">
+        <div class="answer-label">✦ Panduan Jawaban</div>
+        <div class="answer-text">
+          "My escalation framework has three stages:<br><br>
+          <b>1. Acknowledge first:</b> Before anything else, the customer/seller needs to feel heard. I train agents to never start an escalation response by immediately defending policy. Lead with empathy, then solution.<br><br>
+          <b>2. Assess resolution authority:</b> Can this be solved at agent level? TL level? Or does it need L2/Operations/Finance? Don't waste customer time going back and forth — be clear about who owns it.<br><br>
+          <b>3. Own the follow-up:</b> The most damaging thing in CS is when an escalation 'disappears.' I always assign a clear owner and a deadline. The customer or seller should receive an update within the promised timeframe, even if the final answer isn't ready yet."
+        </div>
+      </div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ PEOPLE MANAGEMENT ═══════════════════════════════════════ -->
+<section id="people" class="section">
+  <div class="sec-header">
+    <div class="sec-number">04</div>
+    <div class="sec-title-group">
+      <div class="sec-tag">People Management</div>
+      <h2 class="sec-title">Mengelola Tim</h2>
+      <p class="sec-desc">Kemampuan memimpin, mengembangkan, dan mengatasi masalah dalam tim adalah inti dari peran TL.</p>
+    </div>
+  </div>
+
+  <div class="q-list">
+
+    <div class="q-item">
+      <div class="q-head" onclick="toggleQ(this)">
+        <span class="q-num">13</span>
+        <span class="q-cat cat-people">People</span>
+        <span class="diff diff-medium">● Medium</span>
+        <span class="q-text">Bagaimana kamu menangani agen yang performanya terus-menerus di bawah target?</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="q-body"><div class="q-body-inner">
+        <div class="answer-label">✦ Panduan Jawaban</div>
+        <div class="answer-text">
+          "I use a structured coaching ladder, not a punishment approach:<br><br>
+          <b>1. Root cause first:</b> I have a 1-on-1 to understand why. Is it a knowledge gap, a personal problem, a motivation issue, or a role mismatch?<br><br>
+          <b>2. Targeted action:</b> Based on the root cause — targeted coaching session, live monitoring, knowledge refreshment, or if personal: showing empathy and adjusting support.<br><br>
+          <b>3. PIP (Performance Improvement Plan):</b> If the issue persists after coaching, I put a formal plan together: specific goals, support, timeline (usually 30–60 days), and clear consequences.<br><br>
+          <b>4. Honest conversation:</b> If after all support the performance doesn't improve, I have an honest conversation about whether this role is truly the right fit for them. Sometimes the most caring thing is honesty, not prolonging a mismatch."
+        </div>
+        <div class="answer-tip"><strong>⚡ Tip:</strong> Tunjukkan kamu punya proses yang jelas — bukan langsung disiplin, tapi juga bukan terus dibiarkan. Keseimbangan antara empati dan akuntabilitas.</div>
+      </div></div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-head" onclick="toggleQ(this)">
+        <span class="q-num">14</span>
+        <span class="q-cat cat-people">People</span>
+        <span class="diff diff-hard">● Hard</span>
+        <span class="q-text">Ada dua anggota tim yang berkonflik dan menciptakan ketegangan di dalam tim. Apa yang kamu lakukan?</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="q-body"><div class="q-body-inner">
+        <div class="answer-label">✦ Panduan Jawaban</div>
+        <div class="answer-text">
+          "My approach is: cool down → listen separately → mediate together → set professional expectations.<br><br>
+          <b>1. Cool down:</b> First, I make sure neither person is in an emotional state where a productive conversation isn't possible.<br><br>
+          <b>2. Listen separately:</b> I hear each person's side privately, without judgment. I want to understand their perspective fully before forming any opinion.<br><br>
+          <b>3. Mediate together:</b> I bring them together with one clear objective: not to find who's right, but to agree on how we move forward professionally. I facilitate, I don't judge.<br><br>
+          <b>4. Set the expectation:</b> 'You don't have to be best friends. But on this floor, we work as a team. Professional respect is non-negotiable.' And I follow up — I watch for any lingering tension over the next few weeks."
+        </div>
+      </div></div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-head" onclick="toggleQ(this)">
+        <span class="q-num">15</span>
+        <span class="q-cat cat-people">People</span>
+        <span class="diff diff-medium">● Medium</span>
+        <span class="q-text">Bagaimana cara kamu melakukan coaching yang efektif kepada agen?</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="q-body"><div class="q-body-inner">
+        <div class="answer-label">✦ Panduan Jawaban</div>
+        <div class="answer-text">
+          "I use the <b>GROW model</b> as a framework:<br><br>
+          <b>Goal:</b> Start by defining what we want to achieve from this session. Not just 'improve AHT' but specifically 'reduce your AHT from 7 mins to 5 mins within 2 weeks.'<br><br>
+          <b>Reality:</b> Look at actual data together — I show them their specific interactions that went long. I ask questions rather than telling: 'What do you notice about this conversation?'<br><br>
+          <b>Options:</b> Together we explore what they could do differently. I let them generate ideas first — this builds ownership of the solution.<br><br>
+          <b>Way forward:</b> Agree on specific actions, a timeline, and how we'll measure progress. I always schedule a follow-up date.<br><br>
+          The key is that coaching is a <b>conversation</b>, not a lecture."
+        </div>
+      </div></div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-head" onclick="toggleQ(this)">
+        <span class="q-num">16</span>
+        <span class="q-cat cat-people">People</span>
+        <span class="diff diff-medium">● Medium</span>
+        <span class="q-text">Bagaimana kamu mempertahankan agen yang bagus (top performer) agar tidak resign?</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="q-body"><div class="q-body-inner">
+        <div class="answer-label">✦ Panduan Jawaban</div>
+        <div class="answer-text">
+          "The biggest mistake TLs make is only paying attention to underperformers. Top performers get bored or feel taken for granted, and that's when they leave.<br><br>
+          My approach:<br>
+          <b>1. Give them stretch challenges:</b> Top performers need to keep growing. I give them more complex cases, mentor junior agents, or lead a small process improvement project. Keep them engaged and growing.<br>
+          <b>2. Visible recognition:</b> Acknowledge their work publicly — in team meetings, performance reviews, and especially with management. People want to feel their effort is seen.<br>
+          <b>3. Have regular career conversations:</b> Ask them directly where they want to go. If I know someone wants to become a TL, I can help them build toward that. This builds loyalty.<br>
+          <b>4. Act fast on early signs of disengagement:</b> If a top performer starts showing lower quality or less enthusiasm, I don't wait. I have a private check-in immediately."
+        </div>
+      </div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ SKENARIO ════════════════════════════════════════════════ -->
+<section id="scenario" class="section">
+  <div class="sec-header">
+    <div class="sec-number">05</div>
+    <div class="sec-title-group">
+      <div class="sec-tag">Situational Questions</div>
+      <h2 class="sec-title">Skenario & Case</h2>
+      <p class="sec-desc">Pertanyaan berbasis situasi nyata. Tunjukkan proses berpikirmu, bukan hanya hasil akhirnya.</p>
+    </div>
+  </div>
+
+  <div class="q-list">
+
+    <div class="q-item">
+      <div class="q-head" onclick="toggleQ(this)">
+        <span class="q-num">17</span>
+        <span class="q-cat cat-scenario">Scenario</span>
+        <span class="diff diff-hard">● Hard</span>
+        <span class="q-text">Buyer komplain viral di media sosial tentang layanan TikTok Shop. Tim kamu mendapat eskalasi ini. Apa langkah kamu?</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="q-body"><div class="q-body-inner">
+        <div class="answer-label">✦ Panduan Jawaban</div>
+        <div class="answer-text">
+          "A viral complaint is a reputational issue first, a customer service issue second. Here's my response plan:<br><br>
+          <b>1. Acknowledge publicly and quickly (within 1 hour):</b> Respond to the post — brief, empathetic, no defensive language. 'We hear you and we're looking into this right now. Please DM us so we can resolve this directly.' This shows the public we're responsive.<br><br>
+          <b>2. Take it private and fast-track:</b> Assign a senior agent or handle personally. Do not make the customer repeat their story — read the complaint fully first, then contact them with a prepared solution.<br><br>
+          <b>3. Resolve with a gesture:</b> Depending on the issue, go slightly beyond the standard resolution — a small goodwill gesture can turn an angry customer into a positive story.<br><br>
+          <b>4. Post-resolution:</b> Update the public thread once resolved (without oversharing private details). Then internally: document what went wrong, report to management, and identify process gaps."
+        </div>
+        <div class="answer-tip"><strong>⚡ Tip:</strong> Untuk TikTok Shop, ini sangat relevan. Tunjukkan kamu paham dampak reputasi brand, tidak hanya SOP resolusi standar.</div>
+      </div></div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-head" onclick="toggleQ(this)">
+        <span class="q-num">18</span>
+        <span class="q-cat cat-scenario">Scenario</span>
+        <span class="diff diff-hard">● Hard</span>
+        <span class="q-text">Tiba-tiba ada kebijakan baru dari manajemen yang tidak disukai oleh tim kamu. Bagaimana kamu menyampaikannya?</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="q-body"><div class="q-body-inner">
+        <div class="answer-label">✦ Panduan Jawaban</div>
+        <div class="answer-text">
+          "A TL's job here is to be the bridge, not a barrier. Even if I personally disagree with the policy, my team needs a confident leader — so I separate my personal opinion from my professional role.<br><br>
+          <b>1. Understand fully before communicating:</b> I make sure I fully understand the 'why' behind the policy before I explain it to the team. I ask management directly if something is unclear.<br><br>
+          <b>2. Communicate transparently:</b> I don't sugarcoat it, but I also don't amplify negativity. 'This is the new policy. Here's why it's being implemented. Here's how it changes your daily work. Here are the things we can still control.'<br><br>
+          <b>3. Create space for questions:</b> I let the team ask questions and voice concerns in a safe setting. I capture their feedback and escalate the legitimate ones to management — I advocate for my team, professionally.<br><br>
+          <b>4. Lead by example:</b> I implement the policy myself without complaint on the floor. Culture is set by what leaders do, not what they say."
+        </div>
+      </div></div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-head" onclick="toggleQ(this)">
+        <span class="q-num">19</span>
+        <span class="q-cat cat-scenario">Scenario</span>
+        <span class="diff diff-medium">● Medium</span>
+        <span class="q-text">Dua agen punya performa berbeda: satu CSAT tinggi tapi produktivitas rendah, satu produktivitas tinggi tapi CSAT rendah. Mana yang kamu prioritaskan untuk coaching?</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="q-body"><div class="q-body-inner">
+        <div class="answer-label">✦ Panduan Jawaban</div>
+        <div class="answer-text">
+          "Both need coaching, but for different reasons and with different urgency.<br><br>
+          <b>I'd prioritize the low CSAT / high productivity agent first.</b> Here's why: productivity without quality damages the brand. A fast but unhelpful response is worse than a slow but fully resolved one in the customer's eyes. Low CSAT has a direct impact on customer retention and platform reputation — it's harder to recover from trust damage.<br><br>
+          <b>For the high CSAT / low productivity agent:</b> the issue is usually that they're over-explaining or not using shortcuts and templates. This is a skill/efficiency coaching issue — more mechanical to fix. I'd work with them on specific techniques to reduce handle time without compromising their naturally good customer communication style.<br><br>
+          Ultimately, I want both agents to reach a balance — quality AND efficiency. Neither extreme is sustainable."
+        </div>
+      </div></div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-head" onclick="toggleQ(this)">
+        <span class="q-num">20</span>
+        <span class="q-cat cat-scenario">Scenario</span>
+        <span class="diff diff-hard">● Hard</span>
+        <span class="q-text">Atasan kamu meminta kamu meningkatkan target KPI sebesar 20% bulan depan tanpa tambahan headcount. Apa reaksimu?</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="q-body"><div class="q-body-inner">
+        <div class="answer-label">✦ Panduan Jawaban</div>
+        <div class="answer-text">
+          "I wouldn't just say 'yes' or 'no.' I'd have a structured conversation with my manager:<br><br>
+          <b>1. Understand the 'why':</b> Is this driven by a business need, a client demand, or a benchmark? Understanding the reason helps me find the right path.<br><br>
+          <b>2. Present the current data:</b> I'd show where we are now, what we've already optimized, and what the realistic ceiling is with the current team. This isn't pushback — it's a data conversation.<br><br>
+          <b>3. Propose a plan:</b> 'Here's what I think we can achieve, and here's how.' For example: identify top-performing workflows and replicate them team-wide, reduce idle time between interactions, improve our template library to reduce AHT. These are things I can control.<br><br>
+          <b>4. Commit to what's achievable:</b> If 20% isn't realistic, I'd propose 12–15% with a clear roadmap — and explain what additional resources would unlock the remaining 5–8%. I'd rather give an honest estimate than overpromise and underdeliver."
+        </div>
+        <div class="answer-tip"><strong>⚡ Tip:</strong> Interviewer ingin tahu apakah kamu berani push back secara profesional atau hanya bilang "iya" untuk menyenangkan atasan. Keberanian berbasis data menunjukkan leadership maturity.</div>
+      </div></div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-head" onclick="toggleQ(this)">
+        <span class="q-num">21</span>
+        <span class="q-cat cat-scenario">Scenario</span>
+        <span class="diff diff-medium">● Medium</span>
+        <span class="q-text">Kamu baru saja dipromosikan memimpin tim yang dulunya adalah teman-temanmu. Bagaimana kamu mengatur dinamika ini?</span>
+        <span class="q-arrow">▼</span>
+      </div>
+      <div class="q-body"><div class="q-body-inner">
+        <div class="answer-label">✦ Panduan Jawaban</div>
+        <div class="answer-text">
+          "This is one of the most common challenges for first-time leaders, and I think about it carefully.<br><br>
+          <b>1. Have direct, early conversations:</b> I'd have 1-on-1s with my closest former peers right away. I'd say something like: 'Our friendship matters to me. But my role has changed, and that means some things need to change too — not because I want to create distance, but because it's fair to everyone on the team.'<br><br>
+          <b>2. Absolute consistency:</b> The fastest way to lose credibility as a new leader is to show favoritism to friends. Every decision — from scheduling to feedback to recognition — has to be visibly fair to everyone.<br><br>
+          <b>3. Professional on the floor, human off it:</b> On the floor, I hold the TL standard. Outside work, we can still be friends. The separation is clear and consistent.<br><br>
+          <b>4. Let the work speak:</b> Over time, if I lead well and fairly, the team adapts. Respect comes from consistent, fair leadership — not from being liked."
+        </div>
+      </div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ TIPS ════════════════════════════════════════════════════ -->
+<section id="tips" class="section">
+  <div class="sec-header">
+    <div class="sec-number">06</div>
+    <div class="sec-title-group">
+      <div class="sec-tag">Delivery & Preparation</div>
+      <h2 class="sec-title">Tips & Kalimat Kunci</h2>
+      <p class="sec-desc">Cara menyampaikan jawaban dengan percaya diri dan kalimat-kalimat yang meningkatkan kesan.</p>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom:1.2rem;">
+
+    <div class="card-full">
+      <div style="font-size:0.72rem; font-weight:700; color:var(--green); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:1.2rem;">✅ Do This</div>
+      <ul class="kisi" style="--card-color: var(--green)">
+        <li><b>Gunakan STAR format</b> untuk semua pertanyaan behavioral (Situation, Task, Action, Result).</li>
+        <li><b>Sertakan angka & data</b> — "AHT turun 25%" jauh lebih kuat dari "AHT membaik."</li>
+        <li><b>Pause sebelum menjawab</b> — 2–3 detik berpikir terlihat tenang, bukan gugup.</li>
+        <li><b>Ajukan pertanyaan balik</b> di akhir — tunjukkan kamu sudah riset tentang tim & tantangannya.</li>
+        <li><b>Bicara tentang tim, bukan hanya dirimu</b> — gunakan "we" dan "my team" sesering "I."</li>
+        <li><b>Bicara lebih lambat dari yang terasa natural</b> — gugup bikin kita bicara terlalu cepat.</li>
+      </ul>
+    </div>
+
+    <div class="card-full">
+      <div style="font-size:0.72rem; font-weight:700; color:var(--red); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:1.2rem;">❌ Avoid This</div>
+      <ul class="kisi" style="--card-color: var(--red)">
+        <li><b>Jangan membaca catatan</b> — kontak mata dan keyakinan lebih penting dari kalimat sempurna.</li>
+        <li><b>Jangan terlalu panjang</b> — jawaban ideal 60–120 detik. Lebih dari itu, interviewer mulai kehilangan fokus.</li>
+        <li><b>Jangan speak badly tentang perusahaan/TL lama</b> — tunjukkan kamu fokus pada pembelajaran, bukan keluhan.</li>
+        <li><b>Jangan jawab "tidak tahu" tanpa tindak lanjut</b> — selalu tambahkan "tapi saya akan..."</li>
+        <li><b>Jangan bilang kelemahan yang mendiskualifikasi</b> — pilih weakness yang nyata tapi sudah kamu kelola.</li>
+        <li><b>Jangan hanya bilang "yes" pada target tidak realistis</b> — push back berbasis data menunjukkan maturity.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- STAR method -->
+  <div class="card-full" style="margin-bottom:1.2rem;">
+    <div style="font-size:0.72rem; font-weight:700; color:var(--amber); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:1.2rem;">⭐ Metode STAR — Gunakan untuk Semua Pertanyaan Behavioral</div>
+    <div class="grid-2">
+      <div>
+        <table class="matrix">
+          <tr><th>Huruf</th><th>Artinya</th><th>Contoh Kalimat Pembuka</th></tr>
+          <tr><td>S</td><td>Situation — latar belakang konteks</td><td>"At the time, I was working as... and the situation was..."</td></tr>
+          <tr><td>T</td><td>Task — tanggung jawab atau tantanganmu</td><td>"My responsibility was to... / I was tasked with..."</td></tr>
+          <tr><td>A</td><td>Action — apa yang kamu lakukan secara spesifik</td><td>"So what I did was... / My approach was to..."</td></tr>
+          <tr><td>R</td><td>Result — hasilnya, idealnya dengan angka</td><td>"As a result... / The outcome was that..."</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="callout" style="margin-top:0; height:100%; align-items:center;">
+          <span class="callout-icon">💡</span>
+          <span><b>Tips STAR:</b> Habiskan 10% untuk S, 10% untuk T, 60% untuk A (ini yang dinilai!), dan 20% untuk R. Banyak kandidat menghabiskan terlalu banyak waktu di S&T dan tidak punya waktu untuk menjelaskan action mereka secara detail.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Power phrases -->
+  <div class="card-full">
+    <div style="font-size:0.72rem; font-weight:700; color:var(--red); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem;">💬 Kalimat Kuat — Hafal & Gunakan Alami</div>
+    <div style="font-size:0.82rem; color:var(--muted); margin-bottom:1.2rem;">Kalimat-kalimat ini membuat jawabanmu terdengar mature dan thoughtful:</div>
+    <div class="phrase-grid">
+      <div class="phrase-item">I can teach skills. What I can't teach is the willingness to grow. That's why attitude matters more to me than current performance.</div>
+      <div class="phrase-item">My job as a Team Leader isn't to be the best person on the team. It's to make sure every person on the team has the support they need to do their best work.</div>
+      <div class="phrase-item">I don't just track numbers — I track stories. Every KPI drop has a root cause, and I need to understand that cause before I can fix it.</div>
+      <div class="phrase-item">When I give feedback, I lead with curiosity, not judgment. I ask first — because sometimes the agent already knows what went wrong.</div>
+      <div class="phrase-item">A great team doesn't make me indispensable. A great team is one that can handle the floor confidently even when I'm not there.</div>
+      <div class="phrase-item">Fairness isn't about treating everyone the same. It's about giving everyone what they need to succeed — and that looks different for each person.</div>
+    </div>
+  </div>
+
+  <!-- Questions to ask the interviewer -->
+  <div class="card-full" style="margin-top:1.2rem;">
+    <div style="font-size:0.72rem; font-weight:700; color:var(--blue); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:1.2rem;">🎤 Pertanyaan Bagus untuk Ditanyakan ke Interviewer</div>
+    <div class="grid-2">
+      <ul class="kisi" style="--card-color: var(--blue)">
+        <li>"What does success look like for a TL in their first 90 days here?"</li>
+        <li>"What are the biggest challenges the CS team is currently facing?"</li>
+        <li>"How is coaching and development structured for TLs — is there ongoing training?"</li>
+      </ul>
+      <ul class="kisi" style="--card-color: var(--blue)">
+        <li>"What does the career path look like from TL level here?"</li>
+        <li>"How does the TL role interact with the ops and seller teams on a daily basis?"</li>
+        <li>"What's the team's current biggest KPI challenge, and what's being done about it?"</li>
+      </ul>
+    </div>
+    <div class="callout">
+      <span class="callout-icon">⚡</span>
+      <span><b>Kenapa penting?</b> Kandidat yang bertanya pertanyaan bagus terlihat lebih engaged, lebih siap, dan lebih serius tentang peran ini dibanding yang tidak bertanya apa-apa.</span>
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer>
+  <p>TikTok Shop CS · Team Leader Interview Guide &nbsp;·&nbsp; Built for interview preparation</p>
+  <p style="margin-top:0.5rem;">Made with <span>♥</span> · Good luck on your interview 🚀</p>
+</footer>
+
+<!-- ── SCRIPTS ────────────────────────────────────────────────── -->
+<script>
+  // Tab switching
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    const order = ['overview','about','leadership','ops','people','scenario','tips'];
+    document.querySelectorAll('.nav-btn')[order.indexOf(id)].classList.add('active');
+    window.scrollTo({ top: document.querySelector('.sticky-nav').offsetTop - 10, behavior: 'smooth' });
+
+    // Animate score bars when overview is shown
+    if (id === 'overview') animateBars();
+  }
+
+  // Accordion
+  function toggleQ(headEl) {
+    const item = headEl.parentElement;
+    const wasOpen = item.classList.contains('open');
+    // close all
+    document.querySelectorAll('.q-item.open').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  // Score bars animation
+  function animateBars() {
+    setTimeout(() => {
+      document.querySelectorAll('.score-fill').forEach(bar => bar.classList.add('animate'));
+    }, 200);
+  }
+
+  // Init on load
+  window.addEventListener('load', () => {
+    animateBars();
+  });
+
+  // IntersectionObserver for score bars
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.score-fill').forEach(b => b.classList.add('animate'));
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const bars = document.getElementById('scoreBars');
+  if (bars) observer.observe(bars);
+</script>
+</body>
+</html>
